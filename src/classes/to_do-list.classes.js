@@ -12,6 +12,14 @@ export class To_doList {
     };
     marcarCompletada (id) {
 
+        for ( const todo of this.todos){
+
+            if( todo.id == id){
+                todo.status = !todo.status;
+                break;
+            }
+        }
+
     };
     eliminarCompletados (id) {
 

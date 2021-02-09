@@ -39,6 +39,19 @@ txtInput.addEventListener('keyup', ( event ) => {
 });
 
 
+htmlList.addEventListener("click", (event) =>{
+
+    const nombreElemento = event.target.localName; //input, label, button
+    const todoElemento   = event.target.parentElement.parentElement;
+    const todoId         = todoElemento.getAttribute('data-id');
+
+    if(nombreElemento.includes('input')){
+
+        to_doList.marcarCompletada(todoId);
+        todoElemento.classList.toggle('completed');
+    }
+
+})
 
 
 
