@@ -6,7 +6,6 @@ import { crearTodoHtml } from './js/componentes';
 
 
 export const to_doList = new To_doList();
-const tarea     = new To_do('Primera tarea en javascript');
-const tarea2    = new To_do('Segunda tarea en javascript');
 
-console.log(to_doList);
+
+to_doList.todos.forEach( todo => crearTodoHtml( todo ));

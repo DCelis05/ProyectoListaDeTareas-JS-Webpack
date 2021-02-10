@@ -4,7 +4,7 @@ import {to_doList} from '../index';
 
 const htmlList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
-
+const btnStatus = document.querySelector('.clear-completed');
 
 export const crearTodoHtml = (todo) => {
 
@@ -45,13 +45,35 @@ htmlList.addEventListener("click", (event) =>{
     const todoElemento   = event.target.parentElement.parentElement;
     const todoId         = todoElemento.getAttribute('data-id');
 
+    // console.log(todoId);
     if(nombreElemento.includes('input')){
 
         to_doList.marcarCompletada(todoId);
         todoElemento.classList.toggle('completed');
+
+    } else if (nombreElemento.includes('button')) {
+        to_doList.eliminarTodo( todoId );
+        htmlList.removeChild( todoElemento );
+
     }
 
 })
+
+btnStatus.addEventListener('click', () => {
+
+    to_doList.eliminarCompletados();
+    for (let i = htmlList.children.length-1; i >=0; i--) {
+
+        const elemento = htmlList.children[i];
+
+        if(elemento.classList.contains('completed')){
+
+            htmlList.removeChild(elemento);
+
+        }
+    }
+})
+
 
 
 
